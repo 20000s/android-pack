@@ -815,11 +815,48 @@ art模式的5~7openmemory
 
 https://github.com/GuoQiang1993/Frida-Apk-Unpack.git
 
+(三) hook 
+
+ART下引入了dex2oat来对dex进行编译，dex2oat对类的初始化函数并没有进行编译，那么也就是说类的初始化函数始终运行在ART下的inpterpreter模式，那么最终必然进入到interpreter.cc文件中的Execute函数 hook interpreter.execute
+
+https://bbs.pediy.com/thread-254555.htm
+
+(四) hook define class
+
+## 构造指令提取壳
+
+1. map下读取dex地址填充
+2. dexfindclass
+3. load method有重要参数
+
+
+
 ## 脱指令提取壳
 
 指令提取壳调用loadmethod 和自身定义的方法来获得指令，因而主动调用一般就可以了
 
 fart
 
+自己修改art库的
+
 https://github.com/hanbinglengyue/FART
 
+内存中DexFile结构体完整dex的dump
+
+performLaunchActivity
+
+类函数的主动调用设计实现
+
+CallObjectMethod
+
+```
+method->Invoke
+```
+
+之后修复
+
+
+
+
+
+java函数的interpreter模式和quick模式
